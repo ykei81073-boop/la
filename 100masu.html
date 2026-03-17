@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>100マス計算</title>
+<style>
+body{
+  font-family: sans-serif;
+  text-align:center;
+}
+
+table{
+  border-collapse: collapse;
+  margin:auto;
+}
+
+td, th{
+  border:1px solid black;
+  width:40px;
+  height:40px;
+  text-align:center;
+}
+
+input{
+  width:35px;
+  height:35px;
+  text-align:center;
+  border:none;
+}
+
+button{
+  margin:10px;
+  padding:10px 20px;
+}
+</style>
+</head>
+
+<body>
+
+<h2>100マス計算（かけ算）</h2>
+
+<button onclick="createTable()">新しく作る</button>
+
+<div id="table"></div>
+
+<script>
+
+function randomNum(){
+  return Math.floor(Math.random()*9)+1;
+}
+
+function createTable(){
+
+  let top = [];
+  let left = [];
+
+  for(let i=0;i<10;i++){
+    top.push(randomNum());
+    left.push(randomNum());
+  }
+
+  let html = "<table>";
+
+  html += "<tr><th></th>";
+
+  for(let i=0;i<10;i++){
+    html += "<th>"+top[i]+"</th>";
+  }
+
+  html += "</tr>";
+
+  for(let y=0;y<10;y++){
+
+    html += "<tr>";
+
+    html += "<th>"+left[y]+"</th>";
+
+    for(let x=0;x<10;x++){
+      html += "<td><input></td>";
+    }
+
+    html += "</tr>";
+  }
+
+  html += "</table>";
+
+  document.getElementById("table").innerHTML = html;
+}
+
+createTable();
+
+</script>
+
+</body>
+</html>
